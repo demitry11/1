@@ -1,5 +1,5 @@
 {
-  "name": "pw",
+  "name": "1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,8 +8,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.25.2",
-    "allure-commandline": "^2.18.1",
-    "experimental-allure-playwright": "^0.0.3"
+    "@playwright/test": "^1.26.1"
   }
 }
