@@ -12,9 +12,9 @@ test("TC_001", async ({ page }) => {
 const head = new HeadPage(page);
 const alert = new SecurePage(page);
   await page.goto(Env.test);
-  // expect(await page.title()).toBe('/Overview - Redmine/');
+  await expect(page).toHaveTitle(/Overview - Redmine/);
   await head.clickRegisBtn();
-  // expect(await page.url()).toBe(/.*register/);
+  await expect(page).toHaveURL(/.*register/);
   await register.enterUserName("Dmytro_rud");
   await register.enterUserPass("");
   await register.enterPassConf("1234");
@@ -23,8 +23,8 @@ const alert = new SecurePage(page);
   await register.enterUserMail("rudenko@mail.com");
   await register.clickRegBtn();
   await alert.flashAlert();
-  // await expect(alert.flashAlert).toHaveText('Email не может быть пустым');
-  
+  await expect(page.locator("#errorExplanation")).toContainText("Password doesn't match confirmation", "Password is too short (minimum is 4 characters)");
+ 
 });
 
 test("TC_002", async ({ page }) => {
@@ -32,9 +32,9 @@ test("TC_002", async ({ page }) => {
 const head = new HeadPage(page);
 const alert = new SecurePage(page);
   await page.goto(Env.test);
-  // await page.toHaveTitle(/Overview - Redmine/);
+  await expect(page).toHaveTitle(/Overview - Redmine/);
   await head.clickRegisBtn();
-  // await expect(head).toHaveURL(/.*register/);
+  await expect(page).toHaveURL(/.*register/);
   await register.enterUserName("Dmytro_rud");
   await register.enterUserPass("1234");
   await register.enterPassConf("");
@@ -43,7 +43,7 @@ const alert = new SecurePage(page);
   await register.enterUserMail("rudenko@mail.com");
   await register.clickRegBtn();
   await alert.flashAlert();
-  // await expect(alert.flashAlert).toHaveText('Email не может быть пустым');
+  await expect(page.locator("#errorExplanation")).toContainText("Password doesn't match confirmation");
   
 });
 
@@ -53,9 +53,9 @@ test("TC_003", async ({ page }) => {
 const head = new HeadPage(page);
 const alert = new SecurePage(page);
   await page.goto(Env.test);
-  // await page.toHaveTitle(/Overview - Redmine/);
+  await expect(page).toHaveTitle(/Overview - Redmine/);
   await head.clickRegisBtn();
-  // await expect(head).toHaveURL(/.*register/);
+  await expect(page).toHaveURL(/.*register/);
   await register.enterUserName("");
   await register.enterUserPass("1234");
   await register.enterPassConf("1234");
@@ -64,7 +64,7 @@ const alert = new SecurePage(page);
   await register.enterUserMail("rudenko@mail.com");
   await register.clickRegBtn();
   await alert.flashAlert();
-  // await expect(alert.flashAlert).toHaveText('Email не может быть пустым');
+  await expect(page.locator("#errorExplanation")).toContainText("Login can't be blank");
   
 });
 
@@ -73,9 +73,9 @@ test("TC_004", async ({ page }) => {
 const head = new HeadPage(page);
 const alert = new SecurePage(page);
   await page.goto(Env.test);
-  // await page.toHaveTitle(/Overview - Redmine/);
+  await expect(page).toHaveTitle(/Overview - Redmine/);
   await head.clickRegisBtn();
-  // await expect(head).toHaveURL(/.*register/);
+  await expect(page).toHaveURL(/.*register/);
   await register.enterUserName("Dmytro_rud");
   await register.enterUserPass("1234");
   await register.enterPassConf("1234");
@@ -84,7 +84,7 @@ const alert = new SecurePage(page);
   await register.enterUserMail("rudenko@mail.com");
   await register.clickRegBtn();
   await alert.flashAlert();
-  // await expect(alert.flashAlert).toHaveText('Email не может быть пустым');
+  await expect(page.locator("#errorExplanation")).toContainText("First name can't be blank");
   
 });
 
@@ -93,9 +93,9 @@ test("TC_005", async ({ page }) => {
 const head = new HeadPage(page);
 const alert = new SecurePage(page);
   await page.goto(Env.test);
-  // await page.toHaveTitle(/Overview - Redmine/);
+  await expect(page).toHaveTitle(/Overview - Redmine/);
   await head.clickRegisBtn();
-  // await expect(head).toHaveURL(/.*register/);
+  await expect(page).toHaveURL(/.*register/);
   await register.enterUserName("Dmytro_rud");
   await register.enterUserPass("1234");
   await register.enterPassConf("1234");
@@ -104,6 +104,6 @@ const alert = new SecurePage(page);
   await register.enterUserMail("");
   await register.clickRegBtn();
   await alert.flashAlert();
-  // await expect(alert.flashAlert).toHaveText('Email не может быть пустым');
+  await expect(page.locator("#errorExplanation")).toContainText("Email can't be blank");
   
 });
